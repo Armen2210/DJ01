@@ -9,7 +9,7 @@ def new(request):
     return render(request, 'main/new.html', {'caption': 'Генератор Django'})
 
 def data(request):
-    return HttpResponse("<h1>Это страница data</h1>")
+    return render(request, 'main/data.html', {'caption': 'Генератор Django'})
 
 def test(request):
-    return HttpResponse("<h1>Это страница test</h1>")
+    return render(request, 'main/test.html', {'caption': 'Генератор Django'})
