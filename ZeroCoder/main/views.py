@@ -3,10 +3,10 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("<h1>Это мой первый проект на Django</h1>")
+    return render(request, 'main/index.html', {'caption': 'Генератор Django'})
 
 def new(request):
-    return HttpResponse("<h1>Это страница new</h1>")
+    return render(request, 'main/new.html', {'caption': 'Генератор Django'})
 
 def data(request):
     return HttpResponse("<h1>Это страница data</h1>")
