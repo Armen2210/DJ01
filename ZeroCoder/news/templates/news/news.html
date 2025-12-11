@@ -10,4 +10,14 @@
 <h1>Добро пожаловать в «Генератор Django»</h1>
 <hr>
 
+{% for news in news %}
+    <div>
+        <h2>{{ news.title }}</h2>
+        <p>{{ news.short_description }}</p>
+        <p>{{ news.text }}</p>
+        <p>{{ news.name }}</p>
+        <p>{{ news.pub_date }}</p>
+    </div>
+{% endfor %}
+
 {% endblock %}
