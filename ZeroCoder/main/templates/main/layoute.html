@@ -51,6 +51,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'news_home' %}">Новостная страница</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_news' %}">Добавить новость</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -85,6 +88,9 @@
                         <li class="list-group-item">
                             <a href="{% url 'news_home' %}" class="text-decoration-none">Новостная страница</a>
                         </li>
+                        <li class="list-group-item">
+                            <a href="{% url 'add_news' %}" class="text-decoration-none">Добавить новость</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -109,6 +115,26 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"
 ></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const buttons = document.querySelectorAll('.toggle-btn');
+
+    buttons.forEach(button => {
+        const targetSelector = button.getAttribute('href');
+        const target = document.querySelector(targetSelector);
+
+        target.addEventListener('shown.bs.collapse', function () {
+            button.textContent = 'Скрыть';
+        });
+
+        target.addEventListener('hidden.bs.collapse', function () {
+            button.textContent = 'Показать';
+        });
+    });
+
+});
+</script>
 
 </body>
 </html>

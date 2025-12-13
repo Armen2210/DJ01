@@ -1,0 +1,62 @@
+{% extends 'main/layoute.html' %}
+
+{% block title %}
+    <title>Добавить новость</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-3">
+    <h1 class="mb-4">Добавление новости</h1>
+{{form}}
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Форма для добавления новости</h5>
+
+                    <form action="" method="post">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label">Заголовок новости</label>
+                            <input type="text" class="form-control" placeholder="Например: Домашнее задание">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Краткое описание</label>
+                            <input type="text" class="form-control" placeholder="Коротко о сути новости">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Полный текст новости</label>
+                            <textarea class="form-control" cols="30" rows="7" placeholder="Введите полный текст новости..."></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Дата</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Время</label>
+                                <input type="time" class="form-control">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            Добавить новость
+                        </button>
+
+                        <p class="text-muted small mt-3 mb-0">
+                            После добавления новость появится в списке новостей.
+                        </p>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

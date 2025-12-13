@@ -1,23 +1,50 @@
 {% extends 'main/layoute.html' %}
 
 {% block title %}
-    <title>новостная страница</title>
+    <title>Новости</title>
 {% endblock %}
 
 {% block content %}
 
+<h1 class="mb-4">Новости проекта</h1>
 
-<h1>Добро пожаловать в «Генератор Django»</h1>
-<hr>
+{% if news %}
+    <div class="row">
+        {% for item in news %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
 
-{% for news in news %}
-    <div>
-        <h2>{{ news.title }}</h2>
-        <p>{{ news.short_description }}</p>
-        <p>{{ news.text }}</p>
-        <p>{{ news.name }}</p>
-        <p>{{ news.pub_date }}</p>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ item.title }}</h5>
+
+                        <p class="card-text text-muted">
+                            {{ item.short_description }}
+                        </p>
+
+                        <a class="btn btn-primary mt-auto toggle-btn"
+                           data-bs-toggle="collapse"
+                           href="#news-{{ item.id }}"
+                           role="button"
+                           aria-expanded="false"
+                           aria-controls="news-{{ item.id }}">
+                            Показать
+                        </a>
+
+                        <div class="collapse mt-3" id="news-{{ item.id }}">
+                            <p>{{ item.text }}</p>
+                            <p class="text-muted small mb-0">
+                                Автор: {{ item.name }}<br>
+                                {{ item.pub_date }}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
     </div>
-{% endfor %}
+{% else %}
+    <h4>Новостей пока нет</h4>
+{% endif %}
 
 {% endblock %}
