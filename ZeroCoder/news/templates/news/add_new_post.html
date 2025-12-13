@@ -8,7 +8,7 @@
 
 <div class="container py-3">
     <h1 class="mb-4">Добавление новости</h1>
-{{form}}
+
     <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
             <div class="card shadow-sm">
@@ -18,30 +18,36 @@
                     <form action="" method="post">
                         {% csrf_token %}
 
-                        <div class="mb-3">
-                            <label class="form-label">Заголовок новости</label>
-                            <input type="text" class="form-control" placeholder="Например: Домашнее задание">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Краткое описание</label>
-                            <input type="text" class="form-control" placeholder="Коротко о сути новости">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Полный текст новости</label>
-                            <textarea class="form-control" cols="30" rows="7" placeholder="Введите полный текст новости..."></textarea>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Дата</label>
-                                <input type="date" class="form-control">
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                Проверь поля — есть ошибки.
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Время</label>
-                                <input type="time" class="form-control">
-                            </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            {{ form.title }}
+                            <div class="text-danger small">{{ form.title.errors }}</div>
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.short_description }}
+                            <div class="text-danger small">{{ form.short_description.errors }}</div>
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.text }}
+                            <div class="text-danger small">{{ form.text.errors }}</div>
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.name }}
+                            <div class="text-danger small">{{ form.name.errors }}</div>
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.pub_date }}
+                            <div class="text-danger small">{{ form.pub_date.errors }}</div>
+                            <div class="form-text">Выбери дату и время публикации.</div>
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">
@@ -52,7 +58,7 @@
                             После добавления новость появится в списке новостей.
                         </p>
                     </form>
-
+                    <div class="text-danger mt-2">{{ error }}</div>
                 </div>
             </div>
         </div>
